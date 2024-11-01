@@ -3,7 +3,7 @@ package e1_santiagog_joaquing_manuelg_s3;
 import java.util.Scanner;
 //Atributos de la clase socio
 public class socio {
-    private static int contadorNroSocio = 99;
+    private static int contadorNroSocio = 123456787;
     private int nroSocio;
     private String rut;
     private String nombre;
@@ -125,10 +125,6 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         this.telefono = telefono;
     }
 
-    //o	El registro debe incluir crear y asignar la cuenta de socio. 
-
-
-
     //Metodo para registrar un socio
     public void registrarSocio(){
         Scanner sc = new Scanner(System.in);
@@ -140,6 +136,12 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         // Ingresar datos del socio
         System.out.println("Ingrese el rut del socio: ");
         this.rut = sc.next();
+        //Validacion del rut
+        while (this.rut.length()< 11 || this.rut.length() >12) {
+            System.out.println("El rut ingresado no es válido, por favor ingrese un rut válido: ");
+            this.rut = sc.next();
+        }
+
         sc.nextLine(); 
         System.out.println("Ingrese el nombre del socio: ");
         this.nombre = sc.next();
@@ -166,9 +168,14 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         this.comuna = sc.next();
         sc.nextLine(); 
         System.out.println("Ingrese el teléfono del socio: ");
-        this.telefono = sc.nextInt();
+        this.telefono = sc.nextInt();        
         sc.nextLine(); 
-        sc.close();
+        System.out.println("Socio registrado con éxito.");
 
+        //Valores de cuenta socio 
+        cuentaSocio cuenta = new cuentaSocio();
+        cuenta.setNroSocio(this.nroSocio);
+        cuenta.setValorCuota(80000);
+        cuenta.setCantidadAportada(0);
         }
 }
