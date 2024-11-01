@@ -15,6 +15,7 @@ public class socio {
     private String ciudad;
     private String comuna;
     private int telefono;
+    private cuentaSocio cuenta;
 
 //constructor vacio
 public socio(){  
@@ -172,10 +173,36 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         sc.nextLine(); 
         System.out.println("Socio registrado con éxito.");
 
-        //Valores de cuenta socio 
-        cuentaSocio cuenta = new cuentaSocio();
+        this.cuenta = new cuentaSocio();
         cuenta.setNroSocio(this.nroSocio);
         cuenta.setValorCuota(80000);
         cuenta.setCantidadAportada(0);
         }
+
+    //Metodo para mostrar los datos del socio
+    public void mostrarDatosSocio(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el número de socio: ");
+        int nroSocio = sc.nextInt();
+        sc.nextLine();
+        if (nroSocio == this.nroSocio) {
+            System.out.println("Número de socio: " + this.nroSocio);
+            System.out.println("Rut: " + this.rut);
+            System.out.println("Nombre: " + this.nombre);
+            System.out.println("Apellido Paterno: " + this.apellidoPat);
+            System.out.println("Apellido Materno: " + this.apellidoMat);
+            System.out.println("Correo: " + this.correo);
+            System.out.println("Domicilio: " + this.domicilio);
+            System.out.println("Región: " + this.region);
+            System.out.println("Ciudad: " + this.ciudad);
+            System.out.println("Comuna: " + this.comuna);
+            System.out.println("Valor cuota: " + this.cuenta.getValorCuota());
+            System.out.println("Cantidad aportada: " + this.cuenta.getCantidadAportada());
+        } else {
+            System.out.println("El número de socio ingresado no corresponde a ningún socio registrado.");
+        }
+    }
+
+
+    
 }

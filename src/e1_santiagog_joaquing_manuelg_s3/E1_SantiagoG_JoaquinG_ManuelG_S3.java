@@ -1,9 +1,11 @@
 package e1_santiagog_joaquing_manuelg_s3;
-
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class E1_SantiagoG_JoaquinG_ManuelG_S3 {
+    private static List<socio> socios = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcion=0;
@@ -27,10 +29,18 @@ public class E1_SantiagoG_JoaquinG_ManuelG_S3 {
                     System.out.println("Registrar Socio");
                     socio nuevSocio = new socio();
                     nuevSocio.registrarSocio();
+                    socios.add(nuevSocio);
                     break;
                 case 2:
-                    System.out.println("Ver datos del socio");
-                    break;
+                System.out.println("Ver datos del socio");
+                if (socios.isEmpty()) {
+                    System.out.println("No hay socios registrados.");
+                } else {
+                    for (socio s : socios) {
+                        s.mostrarDatosSocio();
+                    }
+                }
+                break;
                 case 3:
                     System.out.println("Cancelar Cuota");
                     break;
