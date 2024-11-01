@@ -1,7 +1,9 @@
 
 package e1_santiagog_joaquing_manuelg_s3;
+import java.util.Scanner;
 //Atributos de la clase socio
 public class socio {
+    private static int contadorNroSocio = 99;
     private int nroSocio;
     private String rut;
     private String nombre;
@@ -16,7 +18,7 @@ public class socio {
 
 //constructor vacio
 public socio(){  
-
+    this.nroSocio = ++contadorNroSocio;
 }
 
 //Constructor de la clase socio
@@ -122,5 +124,51 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    
+
+    //o	El registro debe incluir crear y asignar la cuenta de socio. 
+
+
+
+    //Metodo para registrar un socio
+    public void registrarSocio(){
+        Scanner sc = new Scanner(System.in);
+        
+        // Asignar número de socio automáticamente
+        this.nroSocio = ++contadorNroSocio;
+        System.out.println("Número de socio asignado: " + this.nroSocio);
+
+        // Ingresar datos del socio
+        System.out.println("Ingrese el rut del socio: ");
+        this.rut = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el nombre del socio: ");
+        this.nombre = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el apellido paterno del socio: ");
+        this.apellidoPat = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el apellido materno del socio: ");
+        this.apellidoMat = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el correo del socio: ");
+        this.correo = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el domicilio del socio: ");
+        this.domicilio = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese la región del socio: ");
+        this.region = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese la ciudad del socio: ");
+        this.ciudad = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese la comuna del socio: ");
+        this.comuna = sc.next();
+        sc.nextLine(); 
+        System.out.println("Ingrese el teléfono del socio: ");
+        this.telefono = sc.nextInt();
+        sc.nextLine(); 
+        sc.close();
+
+        }
 }
