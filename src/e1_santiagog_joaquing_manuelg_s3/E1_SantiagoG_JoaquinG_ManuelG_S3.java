@@ -42,13 +42,34 @@ public class E1_SantiagoG_JoaquinG_ManuelG_S3 {
                 }
                 break;
                 case 3:
-                    System.out.println("Cancelar Cuota");
+                    System.out.println("Pagar cuota");
+                    if (socios.isEmpty()) {
+                        System.out.println("No hay socios registrados.");
+                    } else {
+                        for (socio s : socios) {
+                            s.pagarCuota();
+                        }
+                    }
                     break;
                 case 4:
                     System.out.println("Consultar cuota cancelada");
+                    if (socios.isEmpty()) {
+                        System.out.println("No hay socios registrados.");
+                    } else {
+                        for (socio s : socios) {
+                            s.consultarCuotaCancelada();
+                        }
+                    }
                     break;
                 case 5:
                     System.out.println("Consultar Total de cuotas pagadas por el socio");
+                    if (socios.isEmpty()) {
+                        System.out.println("No hay socios registrados.");
+                    } else {
+                        for (socio s : socios) {
+                            s.consultarTotalCuotasPagadas();
+                        }
+                    }
                     break;
                 case 6:
                     System.out.println("Salir del Programa");

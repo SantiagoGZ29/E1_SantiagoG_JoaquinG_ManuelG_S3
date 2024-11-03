@@ -126,7 +126,7 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         this.telefono = telefono;
     }
 
-    //Metodo para registrar un socio
+    //1. Metodo para registrar un socio
     public void registrarSocio(){
         Scanner sc = new Scanner(System.in);
         
@@ -136,50 +136,61 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
 
         // Ingresar datos del socio
         System.out.println("Ingrese el rut del socio: ");
-        this.rut = sc.next();
-        //Validacion del rut
+        this.rut = sc.nextLine();
+
+        //Validacion e ingreso del rut
         while (this.rut.length()< 11 || this.rut.length() >12) {
             System.out.println("El rut ingresado no es válido, por favor ingrese un rut válido: ");
-            this.rut = sc.next();
+            this.rut = sc.nextLine();
         }
+ 
 
-        sc.nextLine(); 
         System.out.println("Ingrese el nombre del socio: ");
-        this.nombre = sc.next();
-        sc.nextLine(); 
+        this.nombre = sc.nextLine();
+        
+
         System.out.println("Ingrese el apellido paterno del socio: ");
-        this.apellidoPat = sc.next();
-        sc.nextLine(); 
+        this.apellidoPat = sc.nextLine();
+    
+
         System.out.println("Ingrese el apellido materno del socio: ");
-        this.apellidoMat = sc.next();
-        sc.nextLine(); 
+        this.apellidoMat = sc.nextLine();
+     
+
         System.out.println("Ingrese el correo del socio: ");
-        this.correo = sc.next();
-        sc.nextLine(); 
+        this.correo = sc.nextLine();
+     
+
         System.out.println("Ingrese el domicilio del socio: ");
-        this.domicilio = sc.next();
-        sc.nextLine(); 
+        this.domicilio = sc.nextLine();
+    
+
         System.out.println("Ingrese la región del socio: ");
-        this.region = sc.next();
-        sc.nextLine(); 
+        this.region = sc.nextLine();
+      
+
         System.out.println("Ingrese la ciudad del socio: ");
-        this.ciudad = sc.next();
-        sc.nextLine(); 
+        this.ciudad = sc.nextLine();
+
+
         System.out.println("Ingrese la comuna del socio: ");
-        this.comuna = sc.next();
-        sc.nextLine(); 
+        this.comuna = sc.nextLine();
+   
+
         System.out.println("Ingrese el teléfono del socio: ");
         this.telefono = sc.nextInt();        
         sc.nextLine(); 
-        System.out.println("Socio registrado con éxito.");
 
         this.cuenta = new cuentaSocio();
         cuenta.setNroSocio(this.nroSocio);
         cuenta.setValorCuota(80000);
         cuenta.setCantidadAportada(0);
+
+        System.out.println("Socio registrado con éxito.");
+
         }
 
-    //Metodo para mostrar los datos del socio
+    //2. Metodo para mostrar los datos del socio
     public void mostrarDatosSocio(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el número de socio: ");
@@ -203,6 +214,54 @@ public socio(int nroSocio, String rut, String nombre, String apellidoPat, String
         }
     }
 
+    //3. Metodo para pagar cuota
+    public void pagarCuota(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el número de socio: ");
+        int nroSocio = sc.nextInt();
+        sc.nextLine();
+        if (nroSocio == this.nroSocio) {
+            System.out.println("Ingrese el monto a cancelar: ");
+            int monto = sc.nextInt();
+            sc.nextLine();
+            if (monto >= this.cuenta.getValorCuota() && monto!=0) {
+                this.cuenta.setCantidadAportada(this.cuenta.getCantidadAportada() + monto);
+                this.cuenta.setUltimopago(monto);
+                System.out.println("Cuota cancelada con éxito.");
+            } else {
+                System.out.println("El monto ingresado no es suficiente para cancelar la cuota.");
+            }
+        } else {
+            System.out.println("El número de socio ingresado no corresponde a ningún socio registrado.");
+        }
+    }
 
+    //4. Metodo para consultar cuota cancelada
+    public void consultarCuotaCancelada(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el número de socio: ");
+        int nroSocio = sc.nextInt();
+        sc.nextLine();
+        if (nroSocio == this.nroSocio) {
+            System.out.println("Última cuota cancelada: $" + this.cuenta.getUltimopago());
+        } else {
+            System.out.println("El número de socio ingresado no corresponde a ningún socio registrado.");
+        }
+    }
+
+    //5. Metodo para consultar total de cuotas pagadas por el socio
+    public void consultarTotalCuotasPagadas(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el número de socio: ");
+        int nroSocio = sc.nextInt();
+        sc.nextLine();
+        if (nroSocio == this.nroSocio) {
+            int totalCuotas = this.cuenta.getCantidadAportada() / this.cuenta.getValorCuota();
+            System.out.println("Total de cuotas pagadas: " + totalCuotas);
+            System.out.println("Valor total de las cuotas pagadas: " + this.cuenta.getCantidadAportada());
+        } else {
+            System.out.println("El número de socio ingresado no corresponde a ningún socio registrado.");
+        }
+    }
     
 }

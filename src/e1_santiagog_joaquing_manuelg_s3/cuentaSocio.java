@@ -4,6 +4,7 @@ public class cuentaSocio {
     private int nroSocio;
     private int valorCuota;
     private int cantidadAportada;
+    private int ultimopago;
 
     //Constructor vacio
     public cuentaSocio() {
@@ -14,6 +15,7 @@ public class cuentaSocio {
         this.nroSocio = nroSocio;
         this.valorCuota = valorCuota;
         this.cantidadAportada = cantidadAportada;
+        this.ultimopago = 0;
     }
 
     //Metodos get de la clase cuentaSocio
@@ -28,6 +30,9 @@ public class cuentaSocio {
     public int getCantidadAportada() {
         return cantidadAportada;
     }
+    public int getUltimopago() {
+        return ultimopago;
+    }
 
     //Metodos set de la clase cuentaSocio
     public void setNroSocio(int nroSocio) {
@@ -40,5 +45,8 @@ public class cuentaSocio {
 
     public void setCantidadAportada(int cantidadAportada) {
         this.cantidadAportada = cantidadAportada;
+    }
+    public void setUltimopago(int ultimopago) {
+        this.ultimopago = ultimopago;
     }
 }
